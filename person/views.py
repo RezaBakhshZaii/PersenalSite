@@ -15,6 +15,8 @@ def get_info():
         'information': information
     }
     return data
+
+
 # Create your views here.
 def index(requests):
     template = loader.get_template('page.html')
@@ -26,20 +28,19 @@ def messages(requests):
     email = requests.POST.get('email')
     descrip = requests.POST.get('descrip')
     message = requests.POST.get('message')
-
     name_length = len(name)
     email_length = len(email)
     descrip_length = len(descrip)
     message_length = len(message)
-    if name_length == 0 or email_length == 0 or descrip_length == 0 or message_length == 0:
+    if not 1 <= name_length <= 50 or not 1 <= email_length <= 30 or not 1 <= descrip_length <= 30 or\
+            not 1 <= message_length <= 600:
         data = get_info()
         data["name"] = name_length
         data["email"] = email_length
         data["descrip"] = descrip_length
         data["message"] = message_length
         template = loader.get_template('page.html')
-        return HttpResponse(template.render(data, requests))
+        return HttpResponse(template.render(data, requests), args=["#contact"])
     comment = Messages(name=name, email=email, description=descrip, message=message)
     comment.save()
     return HttpResponseRedirect(reverse('index'))
-

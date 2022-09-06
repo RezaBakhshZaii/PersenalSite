@@ -177,8 +177,10 @@
                 <form action="/message" method="post" class="col-12 mt-5 row d-flex justify-content-evenly ">{% csrf_token %}
                     <div class="col-lg-5 col-sm-12">
                         <div>
-                            {% if name == 0 %}
-                            <h4 class="text-danger">نام خود را به درستی وارد کنید!!</h4>
+                            {% if name > 50 %}
+                            <h4 class="text-danger">حداکثر کاراکتر برای نام ۵۰ میباشد!!</h4>
+                            {% elif name == 0 %}
+                            <h4 class="text-danger">فیلد نام نمیتواند خالی باشد!!</h4>
                             {% endif %}
                             <div class="form-floating">
                                 <input name="name" type="text" class="col-12 mb-4 form-control" id="Name" placeholder=" ">
@@ -186,8 +188,10 @@
                             </div>
                         </div>
                         <div>
-                            {% if email == 0 %}
-                            <h4 class="text-danger">ایمیل خود را به درستی وارد کنید!!</h4>
+                            {% if email > 50 %}
+                            <h4 class="text-danger">حداکثر کاراکتر برای ایمیل ۳۰ میباشد!!</h4>
+                            {% elif email == 0 %}
+                            <h4 class="text-danger">فیلد ایمیل نمیتواند خالی باشد!!</h4>
                             {% endif %}
                                 <div class="form-floating">
                                 <input name="email" type="email" class="col-12 mb-4 form-control" id="Email" placeholder=" ">
@@ -195,8 +199,10 @@
                             </div>
                         </div>
                         <div>
-                            {% if descrip == 0 %}
-                            <h4 class="text-danger">موضوع پیام خود را به درستی وارد کنید!!</h4>
+                            {% if descrip > 50 %}
+                            <h4 class="text-danger">حداکثر کاراکتر برای موضوع پیام ۳۰ میباشد!!</h4>
+                            {% elif descrip == 0 %}
+                            <h4 class="text-danger">فیلد موضوع پیام نمیتواند خالی باشد!!</h4>
                             {% endif %}
                             <div class="form-floating">
                                 <input name="descrip" type="text" class="col-lg-12 mb-lg-0   mb-4  form-control" id="Description"
@@ -206,8 +212,10 @@
                         </div>
                     </div>
                     <div class=" col-lg-5 col-sm-12">
-                        {% if message == 0 %}
-                            <h4 class="text-danger">پیام خود را به درستی وارد کنید!!</h4>
+                        {% if message > 50 %}
+                        <h4 class="text-danger">حداکثر کاراکتر برای پیام ۶۰۰ میباشد!!</h4>
+                        {% elif message == 0 %}
+                        <h4 class="text-danger">فیلد پیام نمیتواند خالی باشد!!</h4>
                         {% endif %}
                         <div class="form-floating">
                             <textarea name="message" id="Message" class="form-control h-100" rows="13"
