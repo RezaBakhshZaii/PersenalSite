@@ -4,7 +4,7 @@ from django.db import models
 # Create your models here.
 class Skills(models.Model):
     name = models.CharField(max_length=15)
-    image = models.ImageField(upload_to='static/image')
+    image = models.ImageField(upload_to='person/static/image')
     progress = models.IntegerField()
 
     def __str__(self):
@@ -13,7 +13,7 @@ class Skills(models.Model):
 
 class Project(models.Model):
     name = models.CharField(max_length=50)
-    image = models.ImageField(upload_to='static/image')
+    image = models.ImageField(upload_to='person/static/image')
     description = models.CharField(max_length=500)
 
     def __str__(self):

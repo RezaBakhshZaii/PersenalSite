@@ -40,7 +40,7 @@ def messages(requests):
         data["descrip"] = descrip_length
         data["message"] = message_length
         template = loader.get_template('page.html')
-        return HttpResponse(template.render(data, requests), args=["#contact"])
+        return HttpResponse(template.render(data, requests))
     comment = Messages(name=name, email=email, description=descrip, message=message)
     comment.save()
     return HttpResponseRedirect(reverse('index'))
